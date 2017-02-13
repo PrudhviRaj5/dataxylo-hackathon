@@ -21,6 +21,13 @@ app.use(bodyParser.urlencoded({ extended: false })); // to support URL-encoded b
 app.use(cookieParser()); // to accept any cookies if needed
 app.use(express.static(path.join(__dirname, 'public')));
 
+// allowing cross-origins
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 // all apis
 app.use('/dataxylo/api', index);
 

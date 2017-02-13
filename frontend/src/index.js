@@ -6,7 +6,7 @@ import { Router, Route } from 'inferno-router';
 import createBrowserHistory from 'history/createBrowserHistory';
 
 // app components
-import MyApp from './MyApp';
+import MyApp from './components/MyApp';
 
 if (module.hot) {
     require('inferno-devtools');
