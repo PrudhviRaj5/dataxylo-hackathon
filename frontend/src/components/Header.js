@@ -9,7 +9,7 @@ export default class Header extends Component {
                 <h4>Photo Library</h4>
             </div>
             <div class="col s1">
-                <a class="btn-floating btn-large waves-effect waves-light red" href="#modal1" onClick={console.log('fml')}>
+                <a class="modal-trigger btn-floating btn-large waves-effect waves-light red" data-toggle="modal" data-target="#myPopup">
                   <i class="material-icons">add</i>
                 </a>
             </div>

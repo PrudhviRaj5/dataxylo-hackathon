@@ -18,11 +18,9 @@ export default class ListImageView extends Component {
 
   render() {
     var images = this.state.images;
-    console.log('renderChild', images);
     return (
       <div class="row">{
         images.map(function(image) {
-          console.log('image', image);
           return <ImageView image={image}></ImageView>
         })
       }

@@ -9,10 +9,12 @@ module.exports = {
     },
     //devtool: 'source-map',
     module: {
-        loaders: [{
-            test: /\.js$/,
-            loader: 'babel-loader'
-        }]
+        loaders: [
+            {
+                test: /\.js$/,
+                loader: 'babel-loader'
+            }
+        ]
     },
     devServer: {
         contentBase: './',

@@ -12,6 +12,19 @@ export default class PageComponent extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    var self = this;
+    var url = 'http://139.59.216.131/dataxylo/api/fetch_all';
+    axios({
+      method: 'GET',
+      url: url,
+    }).then(function(response) {
+      self.setState({images: response.data});
+    }).catch(function(error) {
+      console.log("failed to load data");
+    });
+  }
+
   componentDidMount() {
     var self = this;
     var url = 'http://139.59.216.131/dataxylo/api/fetch_all';
@@ -19,28 +32,34 @@ export default class PageComponent extends Component {
       method: 'GET',
       url: url,
     }).then(function(response) {
-      self.setState({images: response.data})
+      self.setState({images: response.data});
     }).catch(function(error) {
       console.log("failed to load data");
     });
   }
 
-  componentDidUpdate() {
-    var url = '';
+  handleSubmit() {
+    var self = this;
+    var inputField = document.getElementById('search_field').value;
+    var url = 'http://139.59.216.131/dataxylo/api/find_all';
     axios({
-      method: 'GET',
+      method: 'POST',
       url: url,
+      data: {
+        title: inputField
+      }
     }).then(function(response) {
-      console.log('response', response);
+      self.setState({images: response.data});
     }).catch(function(error) {
       console.log("failed to load data");
     });
   }
 
   render() {
+    var self = this;
     return (
       <div class="row">
-        <form onSubmit="findImages(this); return false" class="col s12">
+        <form onSubmit={(e) => {e.preventDefault(); self.handleSubmit()}} class="col s12">
           <div class="row">
             <div class="input-field col s12">
               <label for="search_field">Search</label>

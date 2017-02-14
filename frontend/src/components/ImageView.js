@@ -29,6 +29,7 @@ export default class ImageView extends Component {
               </div>
               <div class="card-content">
                 <p>{ this.state.title }</p>
+                
               </div>
             </div>
           </div>
