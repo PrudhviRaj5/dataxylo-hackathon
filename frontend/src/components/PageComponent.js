@@ -41,18 +41,31 @@ export default class PageComponent extends Component {
   handleSubmit() {
     var self = this;
     var inputField = document.getElementById('search_field').value;
-    var url = 'http://139.59.216.131/dataxylo/api/find_all';
-    axios({
-      method: 'POST',
-      url: url,
-      data: {
-        title: inputField
-      }
-    }).then(function(response) {
-      self.setState({images: response.data});
-    }).catch(function(error) {
-      console.log("failed to load data");
-    });
+    if (inputField) {
+      var url = 'http://139.59.216.131/dataxylo/api/find_all';
+      axios({
+        method: 'POST',
+        url: url,
+        data: {
+          title: inputField
+        }
+      }).then(function(response) {
+        self.setState({images: response.data});
+      }).catch(function(error) {
+        console.log("failed to load data");
+      });
+    } else {
+      var self = this;
+      var url = 'http://139.59.216.131/dataxylo/api/fetch_all';
+      axios({
+        method: 'GET',
+        url: url,
+      }).then(function(response) {
+        self.setState({images: response.data});
+      }).catch(function(error) {
+        console.log("failed to load data");
+      });
+    }
   }
 
   render() {

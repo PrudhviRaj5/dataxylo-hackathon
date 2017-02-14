@@ -57,16 +57,7 @@ export default class PopupComponent extends Component {
         console.log("failed to load data");
       });
     } else if (image_url) {
-      axios({
-        method: 'GET',
-        url: image_url,
-      }).then(function(response) {
-        self.postImg(image_url, description);
-      }).catch(function(error) {
-        console.log("failed to load data");
-        alert('Please Input valid image url');
-        return null;
-      });
+      self.postImg(image_url, description);
     } else {
       alert('Please Give Image url or upload an image!');
       return null;
